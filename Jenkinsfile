@@ -8,13 +8,13 @@ pipeline {
                 archiveArtifacts artifacts: 'dist/trainSchedule.zip'
             }
         }
-        stage('Build Docker Image'){
+        stage('Build Docker Image') {
             when {
                 branch 'master'
-    }
+            }
             steps {
                 script {
-                    app = docker.build("naresha553/docker-schedule")
+                    app = docker.build("naresha553/train-schedule")
                     app.inside {
                         sh 'echo $curl localhost:8080'
                     }
